@@ -22,7 +22,7 @@ class NewVisitorTest(unittest.TestCase):
             by=By.TAG_NAME, value='h1').text
         self.assertIn('To-Do', header_text)
         inputbox = self.browser.find_element(by=By.ID, value='id_new_item')
-        self.assertEqual(inputbox.getattr('placeholder'), 'Enter a to-do item')
+        self.assertEqual(inputbox.get_attribute('placeholder'), 'Enter a to-do item')
 
         inputbox.send_keys('Buy peacock feathers')
         inputbox.send_keys(Keys.ENTER)
@@ -33,7 +33,8 @@ class NewVisitorTest(unittest.TestCase):
         # returns a list of elements
         rows = table.find_elements(by=By.TAG_NAME, value='tr')
         self.assertTrue(
-            any(row.text == '1: Buy peacock feathers' for row in rows)
+            any(row.text == '1: Buy peacock feathers' for row in rows),
+            'New to-do item did not appear in table!'
         )
 
         self.fail('Finish the test!')
