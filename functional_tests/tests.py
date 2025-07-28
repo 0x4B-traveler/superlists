@@ -46,14 +46,19 @@ class NewVisitorTest(LiveServerTestCase):
         inputbox.send_keys('Buy peacock feathers')
         inputbox.send_keys(Keys.ENTER)
         self.wait_for_row_in_list_table('1: Buy peacock feathers')
-
+        time.sleep(5)
         inputbox = self.browser.find_element(by=By.ID, value='id_new_item')
         inputbox.send_keys('Use peacock feathers to make a fly')
+        
+        time.sleep(5)
         inputbox.send_keys(Keys.ENTER)
+        time.sleep(5)
 
         self.wait_for_row_in_list_table('1: Buy peacock feathers')
+        time.sleep(5)
         self.wait_for_row_in_list_table(
             '2: Use peacock feathers to make a fly')
+        time.sleep(5)
 
         self.fail('Finish the test!')
 
