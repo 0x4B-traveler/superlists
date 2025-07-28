@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <head>
-    <title>Start a new To-Do lists</title>
+    <title>To-Do lists</title>
 </head>
 
 <body>
@@ -10,6 +10,13 @@
         <input id="id_new_item" placeholder="Enter a to-do item" name="item_text" />
         {% csrf_token %}
     </form>
+    <table id="id_list_table">
+        {% for item in items %}
+        <tr>
+            <td>{{ forloop.counter }}: {{ item.text }}</td>
+        </tr>
+        {% endfor %}
+    </table>
 </body>
 
 </html>
